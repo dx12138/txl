@@ -1,0 +1,26 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.test
+GET     /home                                   Application.home
+GET     /user/login                             UserC.login
+POST	/user/loginCheck						UserC.loginCheck
+GET     /user/register                          UserC.register
+POST    /user/registerCheck                     UserC.registerCheck
+GET     /contact/all                            ContactC.all
+GET     /contact/findById/{id}                  ContactC.findById
+GET     /contact/delete/{id}                    ContactC.delete
+POST    /contact/update/                        ContactC.update
+GET     /contact/add                            ContactC.add
+POST    /contact/addCheck                       ContactC.addCheck
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

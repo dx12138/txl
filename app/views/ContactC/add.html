@@ -1,0 +1,23 @@
+#{extends 'main.html' /}
+#{set title:'易通讯--添加新联系人页' /}
+
+<style type="text/css">
+.errordiv{
+	color:#c00;
+	height: 25px;
+	margin-top:10px;
+}
+</style>
+<p>
+<center>
+<form action="@{ContactC.addCheck()}" method="POST">
+联系人：&nbsp;&nbsp;<input type="text" name="contactor_name" value="">
+<div class="errordiv">#{error 'contactor_name'/}</div>
+手机号码：</td><td><input type="text" name="telphone" value="">
+<div class="errordiv">#{error 'telphone'/}</div>
+备注：&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="text" name="mark" value=""><p>
+<input type="submit" value="提交" class="sub">
+</form>
+<div class="errordiv">${flash.error}</div>
+</center>
+<p>

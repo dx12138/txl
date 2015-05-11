@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>#{get 'title' /}</title>
+<meta charset="${_response_encoding}">
+<style type="text/css">
+body{
+	background: #F6F6F6;
+}
+a{
+	color: #EE7820;
+	text-decoration: none;
+	font-weight:bold;
+}
+a:hover{
+	text-decoration: underline;
+}
+.sub{
+	width: 60px;
+	height:30px;
+	border: none;
+	background: #EE7820;
+	color: #fff;
+	cursor: pointer;
+}
+.div{
+	margin-top: 10px;
+}
+.out{
+	margin-top: 100px;
+}
+.out a, .index{
+	color: red;
+	text-decoration: underline;
+}
+</style>        
+</head>
+    
+<body>
+<h1>易通讯</h1><p>
+<a href="@{Application.index()}" class="index">返回首页</a>
+<hr>
+#{doLayout /} 
+<center>
+#{if session.name != null}
+	<h3>欢迎您登录： ${session.name}</h3>
+#{/if}
+<div class="div">
+<h4>您可以继续以下操作</h4>
+<a href="@{ContactC.all()}?page=1">1. Query all the contacts -- 查询所有联系人</a><p>
+<a href="@{ContactC.all()}?page=1">2. Edit the contact -- 编辑联系人</a><p>
+<a href="@{ContactC.add()}">3. New contacts -- 新建联系人</a><p>
+<a href="@{ContactC.all()}?page=1">4. Delete the contact -- 删除联系人</a><p>
+</div>
+</center>
+<div class="out"><a href="@{UserC.logout()}">退出通讯录</a></div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+#{extends 'main.html' /}
+#{set title:'易通讯--查询所有联系人页' /}
+
+<style type="text/css">
+table {
+	font-family: verdana,arial,sans-serif;
+	font-size:10px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+.upOK, .downOK, .first, .last, .page{
+	color:red;
+}
+.firstNO, .upNO, .downNO, .lastNO{
+	color: gray;
+	cursor: default;
+}
+</style>
+<p>
+<center>
+<table>
+	<tr>
+		<th>编号</th><th>姓名</th><th>手机号</th><th>备注</th><th>修改</th><th>删除</th>
+	</tr>
+	 %{ count = 1 }%
+	 #{list items:contact_list, as:'contact'}
+	 <tr>
+	 	<td>${count}</td>
+	 	<td>${contact?.contactor_name}</td>
+	 	<td>${contact?.telphone}</td>
+	 	<td>${contact?.mark}</td>
+	 	<td><a href="@{ContactC.findById(contact?.id)}">修改</a></td>
+	 	<td><a href="@{ContactC.delete(contact?.id)}">删除</a></td>
+	 </tr>
+	%{ count += 1 }%
+	#{/list}
+</table>
+	<p>
+	#{if page==1}
+		首页
+		上一页
+	#{/if}
+	#{else}
+		<a href="@{ContactC.all()}?page=1" class="first">首页</a>
+		<a href="@{ContactC.all()}?page=${page-1}" class="upOK">上一页</a>
+	#{/else}
+	
+	%{ pages = 1 }%
+	#{forEach number:maxPage}
+	<a href="@{ContactC.all()}?page=${pages}" class="page">${pages}</a>
+	%{ pages += 1 }%
+	#{/forEach}
+	
+	#{if page==maxPage}
+		下一页
+		末页
+	#{/if}
+	#{else}
+		<a href="@{ContactC.all()}?page=${page+1}" class="downOK">下一页</a>
+		<a href="@{ContactC.all()}?page=${maxPage}" class="last">末页</a>
+	#{/else}
+	
+	
+</center>
+<p>

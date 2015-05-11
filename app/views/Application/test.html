@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyHtml.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <script type="text/javascript" src="@{'/public/javascripts/jquery-2.0.js'}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/layer/layer.min.js'}"></script>
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+  	<input type="button" id="layertest">
+  </body>
+</html>
+<<script type="text/javascript">
+<!--
+	$(function(){
+		$("#layertest").click(function(){
+			$.layer({
+			    type: 2,
+			    shadeClose: true,
+			    title: false,
+			    closeBtn: [0, false],
+			    shade: [0.8, '#000'],
+			    border: [0],
+			    offset: ['20px',''],
+			    area: ['1000px', ($(window).height() - 50) +'px'],
+			    iframe: {src: 'http://f2e.sentsin.com/chat'}
+			}); 
+		});
+		
+	});
+
+//-->
+</script>

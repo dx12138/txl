@@ -1,0 +1,63 @@
+
+#{if flash.error /} 
+
+<head>
+<title>易通讯--注册页</title>
+</head>
+<style type="text/css">
+body{
+	background: #F6F6F6;
+}
+a{
+	color: #EE7820;
+	font-weight:bold;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
+.sub{
+	width: 60px;
+	height:30px;
+	border: none;
+	background: #EE7820;
+	color: #fff;
+	cursor: pointer;
+}
+.errordiv{
+	color:#c00;
+	height: 25px;
+	margin-top:10px;
+}
+.index{
+	color: red;
+	text-decoration: underline;
+}
+</style>
+
+<body>
+<h1>易通讯</h1><p><p>
+<a href="@{Application.index()}" class="index">返回首页</a>
+<hr>
+<p>
+<center>
+<form action="@{UserC.registerCheck()}" method="POST">
+ 用户名：&nbsp;&nbsp;&nbsp;<input type="text" name="name" />
+  <div class="errordiv">#{error 'name'/}</div>   
+ 密&nbsp;&nbsp;码：&nbsp;&nbsp;&nbsp;<input type="password" name="password">
+  <div class="errordiv">#{error 'password'/}</div>
+ 确认密码：&nbsp;<input type="password" name="passwordOK">
+  <div class="errordiv">#{error 'passwordOK'/}</div>
+性别：&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="sex" value="0" checked="checked">男
+		  <input type="radio" name="sex" value="1">女&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		  &nbsp;&nbsp;
+  <div class="errordiv">#{error 'sex'/}</div>
+年&nbsp;&nbsp;龄：&nbsp;&nbsp;&nbsp;<input type="age" name="age">
+  <div class="errordiv">#{error 'age'/}</div>
+ <input type="submit" value="注册" class="sub"/> 
+</form> 
+
+
+</center>
+</body>
