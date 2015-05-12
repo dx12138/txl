@@ -21,7 +21,8 @@ public class Application extends Controller {
     }
     
     public static void test2() {
-    	render();
+//    	render();
+    	renderText("test2");
     }
     
     public static void home() {
